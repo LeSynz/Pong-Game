@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pong Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="board">
+    <div class="ball">
+      <div class="ball_effect"></div>
+    </div>
+    <div class="paddle_1 paddle"></div>
+    <div class="paddle_2 paddle"></div>
+    <h1 class="score_1">0</h1>
+    <h1 class="score_2">0</h1>
+    <h1 class="message">
+      Press Enter To Play!
+    </h1>
+    <div class="ai-status">
+      AI: <span id="current-ai">Advanced</span>
+    </div>
+    <div class="controls">
+      <p>AI Types: 1=Simple | 2=Medium | 3=Advanced | 4=Aggressive | 5=Speed</p>
+      <p>R=Toggle Raycast | W/S=Move Paddle</p>
+    </div>
+  </div>
+
+  <!-- AI Modules -->
+  <script src="ai/BaseAI.js"></script>
+  <script src="ai/SimpleAI.js"></script>
+  <script src="ai/MediumAI.js"></script>
+  <script src="ai/AdvancedAI.js"></script>
+  <script src="ai/AggressiveAI.js"></script>
+  <script src="ai/SpeedDemonAI.js"></script>
+  <script src="ai/AIManager.js"></script>
+
+  <!-- Main Game Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>
