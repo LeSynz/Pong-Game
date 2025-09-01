@@ -11,6 +11,10 @@ class GameController {
 		this.winScreen = new WinScreen();
 		this.aiManager = null;
 
+		// Game duration tracking
+		this.gameStartTime = null;
+		this.gameDuration = 0;
+
 		this.ballPhysics.setPaddlePhysics(this.paddlePhysics);
 		this.ballPhysics.setGameController(this);
 	}
@@ -44,6 +48,7 @@ class GameController {
 		if (this.gameState.isPlaying()) {
 			this.gameElements.setMessage('Game Started', 42);
 			this.gameState.setMoving(true);
+			this.gameStartTime = Date.now(); // Start tracking game duration
 			this.startMovement();
 
 			requestAnimationFrame(() => {
@@ -63,12 +68,25 @@ class GameController {
 		this.gameElements.setMessage('Press Enter to Play Pong', 38);
 		this.raycastSystem.clear();
 		this.winScreen.hide();
+		// Reset game duration tracking
+		this.gameStartTime = null;
+		this.gameDuration = 0;
 	}
 
 	showWinScreen(winner) {
+		// Calculate final game duration
+		if (this.gameStartTime) {
+			this.gameDuration = Math.floor(
+				(Date.now() - this.gameStartTime) / 1000
+			);
+		}
+
 		const playerScore = parseInt(this.gameElements.score_1.innerText);
 		const aiScore = parseInt(this.gameElements.score_2.innerText);
 		this.winScreen.show(winner, playerScore, aiScore);
+
+		// Update the duration in the win screen
+		this.winScreen.updateGameDuration(this.gameDuration);
 	}
 
 	startMovement() {

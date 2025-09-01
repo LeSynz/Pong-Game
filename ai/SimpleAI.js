@@ -5,7 +5,7 @@
 class SimpleAI extends BaseAI {
 	constructor(paddle, board, paddleCommon) {
 		super(paddle, board, paddleCommon);
-		this.speed = window.innerHeight * 0.008;
+		this.speed = 4; // Half speed - 4px per frame
 		this.deadZone = 15;
 		this.reactionDelay = 15;
 		this.reactionTimer = 0;

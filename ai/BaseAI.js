@@ -7,7 +7,8 @@ class BaseAI {
 		this.paddle = paddle;
 		this.board = board;
 		this.paddleCommon = paddleCommon;
-		this.speed = window.innerHeight * 0.016;
+		// Fixed speed in pixels per frame instead of viewport-relative
+		this.speed = 8; // Same base speed as player
 		this.reactionDelay = 0;
 		this.deadZone = 1;
 	}

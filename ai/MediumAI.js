@@ -5,7 +5,7 @@
 class MediumAI extends BaseAI {
 	constructor(paddle, board, paddleCommon) {
 		super(paddle, board, paddleCommon);
-		this.speed = window.innerHeight * 0.012; // Medium speed
+		this.speed = 6; // Medium speed - 6px per frame
 		this.deadZone = 8; // Medium precision
 		this.reactionDelay = 12; // Noticeable delay
 		this.reactionTimer = 0;

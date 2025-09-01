@@ -5,7 +5,7 @@
 class AggressiveAI extends BaseAI {
 	constructor(paddle, board, paddleCommon) {
 		super(paddle, board, paddleCommon);
-		this.speed = window.innerHeight * 0.022; // Very fast
+		this.speed = 10; // Faster than player - 10px per frame
 		this.deadZone = 1; // Very precise
 		this.anticipationDistance = 200; // How far ahead to anticipate
 	}

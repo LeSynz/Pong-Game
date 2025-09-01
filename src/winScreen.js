@@ -2,6 +2,24 @@ class WinScreen {
 	constructor() {
 		this.winScreenElement = null;
 		this.isVisible = false;
+		this.gameController = null;
+	}
+
+	init(gameController) {
+		this.gameController = gameController;
+		// Listen for custom events
+		window.addEventListener('playAgain', () => {
+			if (this.gameController) {
+				this.gameController.resetGame();
+				this.gameController.handleEnterKey();
+			}
+		});
+
+		window.addEventListener('changeAI', (event) => {
+			if (this.gameController && event.detail && event.detail.aiType) {
+				this.gameController.switchAI(parseInt(event.detail.aiType));
+			}
+		});
 	}
 
 	show(winner, playerScore, aiScore) {
@@ -132,6 +150,8 @@ class WinScreen {
 	}
 
 	triggerPlayAgain() {
+		// Hide the win screen first
+		this.hide();
 		// Dispatch custom event for game controller to handle
 		window.dispatchEvent(new CustomEvent('playAgain'));
 	}
@@ -167,6 +187,10 @@ class WinScreen {
 				this.isVisible = false;
 			}, 300);
 		}
+	}
+
+	hide() {
+		this.remove();
 	}
 
 	isShowing() {

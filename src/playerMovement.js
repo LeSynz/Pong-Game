@@ -1,7 +1,8 @@
 class PlayerMovement {
 	constructor(gameElements) {
 		this.elements = gameElements;
-		this.paddle1Speed = window.innerHeight * 0.015;
+		// Fixed speed in pixels per frame instead of viewport-relative
+		this.paddle1Speed = 8; // Consistent 8px per frame movement
 		this.previousY = this.elements.paddle_1_coord.top;
 		this.velocity = 0;
 		this.velocityHistory = [];

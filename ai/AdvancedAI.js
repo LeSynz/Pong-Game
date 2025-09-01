@@ -5,7 +5,7 @@
 class AdvancedAI extends BaseAI {
 	constructor(paddle, board, paddleCommon) {
 		super(paddle, board, paddleCommon);
-		this.speed = window.innerHeight * 0.016;
+		this.speed = 8; // Same speed as player - 8px per frame
 		this.deadZone = 1; // Near-perfect precision
 		this.raycastLine = null;
 	}

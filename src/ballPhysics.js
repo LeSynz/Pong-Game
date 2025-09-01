@@ -1,12 +1,17 @@
 class BallPhysics {
 	constructor(gameElements) {
 		this.elements = gameElements;
-		this.dx = Math.floor(Math.random() * 4) + 3;
-		this.dy = Math.floor(Math.random() * 4) + 3;
+		// Fixed ball speeds in pixels per frame instead of random ranges
+		this.dx = 5; // Fixed horizontal speed
+		this.dy = 4; // Fixed vertical speed
 		this.dxd = Math.floor(Math.random() * 2);
 		this.dyd = Math.floor(Math.random() * 2);
 		this.paddlePhysics = null;
 		this.gameController = null;
+
+		// Speed limits for consistent gameplay
+		this.minSpeed = 3;
+		this.maxSpeed = 12;
 	}
 
 	setPaddlePhysics(paddlePhysics) {
@@ -18,8 +23,9 @@ class BallPhysics {
 	}
 
 	randomizeBall() {
-		this.dx = Math.floor(Math.random() * 4) + 3;
-		this.dy = Math.floor(Math.random() * 4) + 3;
+		// Fixed speed ranges for consistent gameplay
+		this.dx = Math.floor(Math.random() * 3) + 4; // 4-6 px/frame
+		this.dy = Math.floor(Math.random() * 3) + 3; // 3-5 px/frame
 		this.dxd = Math.floor(Math.random() * 2);
 		this.dyd = Math.floor(Math.random() * 2);
 	}
@@ -52,12 +58,19 @@ class BallPhysics {
 					null,
 					1
 				);
-				this.dx = frictionResult.dx;
-				this.dy = frictionResult.dy;
+				this.dx = Math.max(
+					this.minSpeed,
+					Math.min(this.maxSpeed, frictionResult.dx)
+				);
+				this.dy = Math.max(
+					this.minSpeed,
+					Math.min(this.maxSpeed, frictionResult.dy)
+				);
 				this.dyd = frictionResult.dyd;
 			} else {
-				this.dx = Math.floor(Math.random() * 4) + 3;
-				this.dy = Math.floor(Math.random() * 4) + 3;
+				// Fixed speed ranges instead of random
+				this.dx = Math.floor(Math.random() * 3) + 4; // 4-6 px/frame
+				this.dy = Math.floor(Math.random() * 3) + 3; // 3-5 px/frame
 			}
 		}
 		if (
@@ -76,12 +89,19 @@ class BallPhysics {
 					null,
 					2
 				);
-				this.dx = frictionResult.dx;
-				this.dy = frictionResult.dy;
+				this.dx = Math.max(
+					this.minSpeed,
+					Math.min(this.maxSpeed, frictionResult.dx)
+				);
+				this.dy = Math.max(
+					this.minSpeed,
+					Math.min(this.maxSpeed, frictionResult.dy)
+				);
 				this.dyd = frictionResult.dyd;
 			} else {
-				this.dx = Math.floor(Math.random() * 4) + 3;
-				this.dy = Math.floor(Math.random() * 4) + 3;
+				// Fixed speed ranges instead of random
+				this.dx = Math.floor(Math.random() * 3) + 4; // 4-6 px/frame
+				this.dy = Math.floor(Math.random() * 3) + 3; // 3-5 px/frame
 			}
 		}
 

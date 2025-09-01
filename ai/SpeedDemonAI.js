@@ -5,7 +5,7 @@
 class SpeedDemonAI extends AdvancedAI {
 	constructor(paddle, board, paddleCommon) {
 		super(paddle, board, paddleCommon);
-		this.speed = window.innerHeight * 0.035; // Ultra fast movement
+		this.speed = 12; // Very fast - 12px per frame
 		this.deadZone = 0.1; // Almost perfect precision
 		this.speedBoostMultiplier = 2.5; // Much higher speed amplification
 		this.extremeEdgeRatio = 0.85; // 85% toward paddle edges - very extreme
